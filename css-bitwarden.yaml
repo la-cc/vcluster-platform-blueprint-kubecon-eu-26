@@ -2,8 +2,8 @@ apiVersion: external-secrets.io/v1
 kind: ClusterSecretStore
 metadata:
     labels:
-        argocd.argoproj.io/instance: {{ .cluster.name }}-external-secrets
-    name: "{{ .cluster.name }}-{{ .cluster.stage }}"
+        argocd.argoproj.io/instance: controlplane-prod-external-secrets
+    name: "controlplane-prod"
 spec:
   provider:
     bitwardensecretsmanager:
