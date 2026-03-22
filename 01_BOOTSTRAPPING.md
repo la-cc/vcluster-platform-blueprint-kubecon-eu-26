@@ -1,4 +1,4 @@
-# Welcome to the Prep of the vCluster Workshop at KubeCon EU 2026 - Bootstrapping the Platform 02! 💻
+# Welcome to the Prep of the vCluster Workshop at KubeCon EU 2026 - Bootstrapping the Platform 01! 💻
 
 > ⚠️ Note: You will need just 5–10 minutes to complete the setup and then you are ready for the workshop session!
 
@@ -14,7 +14,8 @@ You will find the following folder structure in the repo:
 
 ## Folder Structure
 
-* `kubara` (binary)
+* `kubara` (binary built for MacOS Arm64. You can download another version from the [Pocket kubara releases](https://github.com/la-demos/vcluster-platform-blueprint-kubecon-eu-26/releases/tag/0.0.0) or build it yourself from the [Pocket kubara](https://github.com/la-demos/pocket-kubara).
+
 * `css-bitwarden.yaml` (example file)
 * `vcluster-config-controlplane.yaml` (example file)
 * `00_PREREQUISITES.md` (prerequisites and setup steps)
@@ -29,6 +30,9 @@ Let’s start!
 # Step 1 - vCluster Setup 💻
 
 For this workshop, we are running [vCluster in Docker (vind)](https://github.com/loft-sh/vind), so everyone is able to build a full Kubernetes platform on top of it.
+
+
+<img src="z_images/01-001.png" width="1000" style="border-radius: 24px;" />
 
 ## Prep Steps
 
@@ -76,7 +80,7 @@ Now let’s start setting up the platform on top of it.
 
 # Step 2 - Kubara Setup Explained 💻
 
-## What is Kubara?
+## What is kubara?
 
 Kubara is an open-source framework from platform engineers for platform engineers, created by STACKIT to help users bootstrap a production-ready Kubernetes platform based on distros.
 
@@ -119,12 +123,14 @@ Fill out the missing values in the `config.yaml`. Override values as needed. For
 
 The only value you might need to change is the DNS (IP address), depending on your container engine network setup. You will get this information later, so you can ignore this block for now:
 
-`dnsName: cp-workshop-prod.172.18.255.254.nip.io`
-→ `dnsName: cp-workshop-prod.YOUR-IP-ADDRESS.nip.io`
+`dnsName: controlplane-prod.172.18.255.254.traefik.me`
+→ `dnsName:  controlplane-prod.YOUR-IP-ADDRESS.traefik.me`
 
 # Step 3 - Bootstrapping the Kubernetes Platform 💻
 
 ## External Secrets Setup with Bitwarden
+
+> ⚠️ Note: You will need the access token created for the machine account in the prerequisites section.
 
 In this part, you will create a secret for the Bitwarden access token in the `external-secrets` namespace.
 
@@ -156,10 +162,10 @@ If not, do it now. Otherwise, check the prerequisites and complete the Bitwarden
 Then execute:
 
 ```bash
-./kubara bootstrap --with-es-css-file css-bitwarden.yaml <cluster-name-from-config-file> --with-es-crds
-
 ./kubara bootstrap --with-es-css-file css-bitwarden.yaml controlplane --with-es-crds
 ```
+
+* controlplane is the `PROJECT_NAME` you have set in your `.env` file.
 
 Now check if everything is up and running:
 
@@ -206,19 +212,20 @@ Just open your ingress host in the browser:
 kubectl get ing -n argocd
 
 NAME                        CLASS     HOSTS                                     ADDRESS          PORTS   AGE
-argocd-additional-ingress   traefik   controlplane-prod.172.18.255.254.nip.io   172.18.255.254   80      15h
+argocd-additional-ingress   traefik   controlplane-prod.172.18.255.254.traefik.me   172.18.255.254   80      15h
 ```
 
 Host:
-[http://controlplane-prod.172.18.255.254.nip.io/argocd/](http://controlplane-prod.172.18.255.254.nip.io/argocd/)
+[http://controlplane-prod.172.18.255.254.traefik.me/argocd/](http://controlplane-prod.172.18.255.254.traefik.me/argocd/)
 
 You should see the Argo CD dashboard after logging in.
 
 You will also see the homer-dashboard if you just open the host without the `/argocd` path:
 
-[http://controlplane-prod.172.18.255.254.nip.io](http://controlplane-prod.172.18.255.254.nip.io)
+[http://controlplane-prod.172.18.255.254.traefik.me](http://controlplane-prod.172.18.255.254.traefik.me)
 
-![Homer Dashboard](z_images/kubara-developer-portal.png)
+
+<img src="z_images/kubara-developer-portal.png" width="1000" style="border-radius: 24px;" />
 
 # Congratulations!
 
@@ -226,4 +233,4 @@ You have successfully set up a fully running environment.
 
 We look forward to seeing you on March 23 at the workshop, where we’ll explore the environment and show you some cool things you can build with it!
 
-Don't forget to leave a ⭐️ on the [vind repository](https://github.com/loft-sh/vind) to show your support for the community project!
+Don't forget to leave a ⭐️ on the [vind repository](https://github.com/loft-sh/vind) or [kubara repository](https://github.com/kubara-io/kubara) to show your support for the community project!

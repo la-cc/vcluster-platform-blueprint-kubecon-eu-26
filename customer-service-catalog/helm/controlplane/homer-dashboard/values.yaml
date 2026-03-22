@@ -110,4 +110,4 @@ dashboardConfig:
       items:
         - name: "Secretsmanager"
           logo: "/assets/tools/secretsmanager.png"
-          url: "https://replace-me-with-your-url"
+          url: "https://vault.bitwarden.com/#"

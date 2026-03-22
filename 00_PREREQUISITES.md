@@ -6,7 +6,7 @@ Please ensure you have the following prerequisites in place before starting the 
 
 Please ensure the following tools are installed:
 
-* **Docker Desktop**, **OrbStack**, or another container runtime
+* **[Docker Desktop](https://www.docker.com/products/docker-desktop/)**, **[OrbStack](https://orbstack.dev/)**, or another container runtime
 * **[kubectl](https://kubernetes.io/docs/tasks/tools/)**
 * **[vcluster CLI](https://www.vcluster.com/docs/platform/install/quick-start-guide)**
 * **[Helm](https://helm.sh/docs/intro/install/)**
