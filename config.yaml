@@ -48,8 +48,8 @@ clusters:
       longhorn:
         status: deactivated
       gpuOperator:
-        status: deactivated
+        status: activated
       ollama:
-        status: deactivated
+        status: activated
       kagent:
-        status: deactivated
+        status: activated

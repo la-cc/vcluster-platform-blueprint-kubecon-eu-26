@@ -104,9 +104,9 @@ inClusterSecretLabels:
   metrics-server: "deactivated"
   metallb: "deactivated"
   longhorn: "deactivated"
-  gpu-operator: "deactivated"
-  ollama: "deactivated"
-  kagent: "deactivated"
+  gpu-operator: "activated"
+  ollama: "activated"
+  kagent: "activated"
 
 
 externalSecrets:

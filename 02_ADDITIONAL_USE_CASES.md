@@ -134,6 +134,12 @@ Execute this command on your external VM and you will see that the node is added
 
 ```bash
 kubectl get nodes
+
+NAME           STATUS   ROLES                  AGE   VERSION
+controlplane   Ready    control-plane,master   5d    v1.35.0
+gpu-worker-0   Ready    <none>                 42s   v1.35.0
+worker-1       Ready    <none>                 5d    v1.35.0
+worker-2       Ready    <none>                 5d    v1.35.0
 ```
 
 Now you have not only connected an external node to your local cluster, but also integrated it through Tailscale behind the scenes into your service mesh without exposing the node to the public internet.
